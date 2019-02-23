@@ -1,10 +1,12 @@
 function! lsp_ultisnips#get_vim_completion_item(item, ...) abort
+    let a:item['label'] = trim(a:item['label'])
+
     let l:completion = call(function('lsp#omni#default_get_vim_completion_item'), [a:item] + a:000)
 
     if has_key(a:item, 'insertTextFormat') && a:item['insertTextFormat'] == 2
+        let l:trigger = a:item['label']
         let l:snippet = substitute(a:item['insertText'], '\%x00', '\\n', 'g')
-        let l:word = trim(a:item['label'])
-        let l:trigger = l:word
+
         let l:completion['user_data'] = string([l:trigger, l:snippet])
     endif
 
@@ -13,6 +15,7 @@ endfunction
 
 function! lsp_ultisnips#get_supported_capabilities() abort
     let l:capabilities = lsp#default_get_supported_capabilities()
+
     let l:capabilities['textDocument'] =
                 \   {
                 \       'completion': {
