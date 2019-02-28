@@ -20,6 +20,17 @@ Plug 'thomasfaingnaert/vim-lsp', {'branch': 'ultisnips-integration'}
 Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 ```
 
+## Disable for specific language servers
+By default, snippet integration is enabled for all language servers. You can disable snippets for one or more servers manually as follows:
+```vim
+autocmd User lsp_setup call lsp#register_server({
+            \ 'name': 'clangd',
+            \ 'cmd': {server_info->['clangd']},
+            \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+            \ 'config': { 'snippets': 0 }
+            \ })
+```
+
 ## Example Configuration (using omnifunc)
 ```vim
 call plug#begin()
