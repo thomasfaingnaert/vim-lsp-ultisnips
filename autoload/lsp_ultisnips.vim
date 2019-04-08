@@ -3,11 +3,25 @@ function! lsp_ultisnips#get_vim_completion_item(item, ...) abort
 
     let l:completion = call(function('lsp#omni#default_get_vim_completion_item'), [a:item] + a:000)
 
+    " Set trigger and snippet
     if has_key(a:item, 'insertTextFormat') && a:item['insertTextFormat'] == 2
-        let l:trigger = a:item['label']
-        let l:snippet = substitute(a:item['insertText'], '\%x00', '\\n', 'g')
+        if has_key(a:item, 'insertText')
+            let l:trigger = a:item['label']
+            let l:snippet = substitute(a:item['insertText'], '\%x00', '\\n', 'g')
 
-        let l:completion['user_data'] = string([l:trigger, l:snippet])
+            let l:user_data = {'vim-lsp-ultisnips': { 'trigger': l:trigger, 'snippet': l:snippet } }
+            let l:completion['user_data'] = json_encode(l:user_data)
+        elseif has_key(a:item, 'textEdit')
+            let l:user_data = json_decode(l:completion['user_data'])
+
+            let l:trigger = a:item['label']
+            let l:snippet = l:user_data['vim-lsp/textEdit']['newText']
+
+            let l:user_data['vim-lsp/textEdit']['newText'] = l:trigger
+
+            let l:user_data['vim-lsp-ultisnips'] = { 'trigger': l:trigger, 'snippet': l:snippet }
+            let l:completion['user_data'] = json_encode(l:user_data)
+        endif
     endif
 
     return l:completion
@@ -42,10 +56,10 @@ function! s:handle_snippet(item) abort
         return
     endif
 
-    execute 'let l:user_data = ' . a:item['user_data']
+    let l:user_data = json_decode(a:item['user_data'])
 
-    let s:trigger = l:user_data[0]
-    let s:snippet = l:user_data[1]
+    let s:trigger = l:user_data['vim-lsp-ultisnips']['trigger']
+    let s:snippet = l:user_data['vim-lsp-ultisnips']['snippet']
 
     call timer_start(0, function('s:expand_snippet'))
 endfunction
