@@ -56,7 +56,11 @@ function! s:handle_snippet(item) abort
         return
     endif
 
-    let l:user_data = json_decode(a:item['user_data'])
+    try
+        let l:user_data = json_decode(a:item['user_data'])
+    catch
+        return
+    endtry
 
     if (type(l:user_data) != type({})) || (!has_key(l:user_data, 'vim-lsp-ultisnips'))
         return
