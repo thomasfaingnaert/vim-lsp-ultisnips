@@ -74,5 +74,5 @@ endfunction
 
 augroup lsp_ultisnips
     autocmd!
-    autocmd CompleteDone * call s:handle_snippet(v:completed_item)
+    autocmd User lsp_complete_done call s:handle_snippet(v:completed_item)
 augroup END
