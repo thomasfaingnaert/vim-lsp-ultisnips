@@ -17,7 +17,7 @@ Otherwise, you can install these using [vim-plug](https://github.com/junegunn/vi
 ```vim
 Plug 'SirVer/ultisnips'
 Plug 'prabirshrestha/async.vim'
-Plug 'thomasfaingnaert/vim-lsp', {'branch': 'ultisnips-integration'}
+Plug 'prabirshrestha/vim-lsp'
 Plug 'thomasfaingnaert/vim-lsp-snippets'
 Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 ```
@@ -39,7 +39,7 @@ call plug#begin()
 
 Plug 'SirVer/ultisnips'
 Plug 'prabirshrestha/async.vim'
-Plug 'thomasfaingnaert/vim-lsp', {'branch': 'ultisnips-integration'}
+Plug 'prabirshrestha/vim-lsp'
 Plug 'thomasfaingnaert/vim-lsp-snippets'
 Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
