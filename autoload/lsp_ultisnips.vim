@@ -1,5 +1,7 @@
 function! lsp_ultisnips#get_snippet(text) abort
-    return substitute(a:text, '\%x00', '\\n', 'g')
+    let l:snippet = substitute(a:text, '\%x00', '\\n', 'g')
+    let l:snippet = substitute(l:snippet, '"', '\\"', 'g')
+    return l:snippet
 endfunction
 
 function! lsp_ultisnips#expand_snippet(trigger, snippet)
