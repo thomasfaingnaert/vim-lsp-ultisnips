@@ -4,10 +4,8 @@ function! s:escape_string(str) abort
     return l:ret
 endfunction
 
-function! lsp_ultisnips#get_snippet(text) abort
-    return s:escape_string(a:text)
+function! lsp_ultisnips#expand_snippet(params)
+    call feedkeys("\<C-r>=UltiSnips#Anon(\"" . s:escape_string(a:params.snippet) . "\", \"\", '', 'i')\<CR>")
 endfunction
 
-function! lsp_ultisnips#expand_snippet(trigger, snippet)
-    call feedkeys("\<C-r>=UltiSnips#Anon(\"" . a:snippet . "\", \"" . s:escape_string(a:trigger) . "\", '', 'i')\<CR>")
-endfunction
+
