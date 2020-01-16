@@ -16,7 +16,7 @@ jobs:
         sudo update-alternatives --install /usr/bin/clangd clangd $(which clangd-8) 100
         curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         ln -sf $(pwd)/test/vimrc ~/.vim/vimrc
-        ls -lA ~/.vim
+        vim +PlugInstall +qall
     - name: Print versions
       run: |
         vim --version
