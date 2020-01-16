@@ -25,3 +25,5 @@ if executable('clangd')
 endif
 
 set completeopt+=menuone
+set expandtab
+set shiftwidth=4 tabstop=4 softtabstop=4
