@@ -13,12 +13,13 @@ endfunction
 function! FillIn() abort
     if mode() == 's'
         call timer_start(100, {_ -> Quit()})
-        call feedkeys("1\<Tab>2\<Tab>;")
+        call feedkeys("1\<Tab>\<C-l>2\<Tab>\<C-l>;")
     endif
 endfunction
 
 function! s:run()
     inoremap <C-l> <C-r>=Sleep()<CR>
+    snoremap <C-l> <C-r>=Sleep()<CR>
 
     edit! test.cpp
 
