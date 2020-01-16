@@ -12,8 +12,10 @@ endfunction
 
 function! FillIn() abort
     if mode() == 's'
-        call timer_start(100, {_ -> Quit()})
-        call feedkeys("1\<Tab>\<C-l>2\<Tab>\<C-l>;")
+        call timer_stop(s:timer)
+        call timer_start(300, {_ -> Quit()})
+        call timer_start(100, {_ -> feedkeys("1\<Tab>")})
+        call timer_start(200, {_ -> feedkeys("2\<Tab>")})
     endif
 endfunction
 
@@ -24,9 +26,8 @@ function! s:run()
     edit! test.cpp
 
     normal! 7G
-    "call timer_start(0, {_ -> feedkeys("o\<C-l>std::vec\<C-x>\<C-o>\<C-l>\<C-y>")})
     call timer_start(0, {_ -> feedkeys("o\<C-l>fo\<C-x>\<C-o>\<C-l>\<C-y>")})
-    call timer_start(100, {_ -> FillIn()}, {'repeat': -1})
+    let s:timer = timer_start(100, {_ -> FillIn()}, {'repeat': -1})
 endfunction
 
 call s:run()
