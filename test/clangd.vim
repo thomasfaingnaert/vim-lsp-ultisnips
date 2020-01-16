@@ -1,6 +1,5 @@
 function! Sleep() abort
-    sleep 1
-    redraw!
+    sleep 100m
     return ''
 endfunction
 
