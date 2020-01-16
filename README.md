@@ -1,4 +1,5 @@
 # vim-lsp-ultisnips
+![](https://github.com/thomasfaingnaert/vim-lsp-ultisnips/workflows/CI/badge.svg)
 This plugin integrates [UltiSnips](https://github.com/SirVer/ultisnips) in [vim-lsp](https://github.com/prabirshrestha/vim-lsp) to provide Language Server Protocol snippets.
 You can use both Vim's built-in omnifunc or [asyncomplete.vim](https://github.com/prabirshrestha/asyncomplete.vim) for completion.
 
