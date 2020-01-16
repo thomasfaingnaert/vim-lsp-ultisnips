@@ -13,9 +13,9 @@ endfunction
 function! FillIn() abort
     if mode() == 's'
         call timer_stop(s:timer)
-        call timer_start(300, {_ -> Quit()})
         call timer_start(100, {_ -> feedkeys("1\<Tab>")})
         call timer_start(200, {_ -> feedkeys("2\<Tab>")})
+        call timer_start(300, {_ -> Quit()})
     endif
 endfunction
 
