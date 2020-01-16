@@ -25,7 +25,7 @@ function! s:run()
 
     edit! test.cpp
 
-    normal! 7G
+    normal! 8G
     call timer_start(0, {_ -> feedkeys("o\<C-l>fo\<C-x>\<C-o>\<C-l>\<C-y>")})
     let s:timer = timer_start(100, {_ -> FillIn()}, {'repeat': -1})
 endfunction
