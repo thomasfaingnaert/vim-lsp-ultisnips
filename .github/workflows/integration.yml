@@ -9,9 +9,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
+    - name: Install dependencies
+      run: sudo apt-get install -y vim clang-tools-8
+    - name: Print versions
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        vim --version
+        clangd --version
