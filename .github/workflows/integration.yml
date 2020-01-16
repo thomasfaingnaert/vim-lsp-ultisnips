@@ -30,8 +30,6 @@ jobs:
       run: |
         vim --version
         clangd --version
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v1
     - name: Run tests
       run: |
         cd test/
