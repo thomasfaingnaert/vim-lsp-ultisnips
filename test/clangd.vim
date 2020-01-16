@@ -4,14 +4,10 @@ function! Sleep() abort
     return ''
 endfunction
 
-function! Print() abort
-    let l:content = getbufline('%', 1, '$')
-    call writefile(l:content, 'test.log')
-endfunction
-
 function! Quit() abort
     call feedkeys("\<Esc>")
-    call Print()
+    let l:content = getbufline('%', 1, '$')
+    call writefile(l:content, 'test.log')
     qall!
 endfunction
 
@@ -24,7 +20,6 @@ endfunction
 
 function! s:run()
     inoremap <C-l> <C-r>=Sleep()<CR>
-    snoremap <C-l> <C-r>=Sleep()<CR>
 
     edit! test.cpp
 
@@ -34,4 +29,3 @@ function! s:run()
 endfunction
 
 call s:run()
-"qall!
