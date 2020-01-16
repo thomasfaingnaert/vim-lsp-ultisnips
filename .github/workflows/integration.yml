@@ -33,5 +33,5 @@ jobs:
     - name: Run tests
       run: |
         cd test/
-        vim -S clangd.vim
+        vim -S clangd.vim &>/dev/null
         cat test.log
