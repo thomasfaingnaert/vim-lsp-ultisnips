@@ -13,6 +13,7 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install -y vim clang-tools-8
+        sudo update-alternatives --install /usr/bin/clangd clangd $(which clangd-8) 100
     - name: Print versions
       run: |
         vim --version
