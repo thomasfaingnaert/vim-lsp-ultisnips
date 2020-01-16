@@ -34,4 +34,4 @@ function! s:run()
 endfunction
 
 call s:run()
-qall!
+"qall!
