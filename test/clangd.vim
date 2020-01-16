@@ -33,5 +33,5 @@ function! s:run()
     call timer_start(100, {_ -> FillIn()}, {'repeat': -1})
 endfunction
 
-" call s:run()
+call s:run()
 qall!
