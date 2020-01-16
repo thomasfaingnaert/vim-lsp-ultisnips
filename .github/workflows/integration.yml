@@ -9,8 +9,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v1
     - name: Install dependencies
       run: |
         sudo apt-get update -y
@@ -23,6 +21,8 @@ jobs:
       run: |
         vim --version
         clangd --version
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v1
     - name: Run tests
       run: |
         cd test/
