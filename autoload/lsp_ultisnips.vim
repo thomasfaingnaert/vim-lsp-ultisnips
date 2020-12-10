@@ -1,5 +1,6 @@
 function! s:escape_string(str) abort
-    let l:ret = substitute(a:str, '\%x00', '\\n', 'g')
+    let l:ret = substitute(a:str, '\\', '\\\\', 'g')
+    let l:ret = substitute(l:ret, '\%x00', '\\n', 'g')
     let l:ret = substitute(l:ret, '"', '\\"', 'g')
     return l:ret
 endfunction
