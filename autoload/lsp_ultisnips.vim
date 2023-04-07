@@ -6,5 +6,5 @@ function! s:escape_string(str) abort
 endfunction
 
 function! lsp_ultisnips#expand_snippet(params)
-    call feedkeys("\<C-r>=UltiSnips#Anon(\"" . s:escape_string(a:params.snippet) . "\", \"\", '', 'i')\<CR>")
+    call feedkeys("\<C-r>=UltiSnips#Anon(\"" . s:escape_string(a:params.snippet) . "\", \"\", '', 'i')\<CR>", 'n')
 endfunction
